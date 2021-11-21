@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_practice/components/dialog/dialog_page.dart';
 import 'package:getx_practice/screens/bottom_sheet_page.dart';
+import 'package:getx_practice/screens/snackbar_page.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -22,6 +23,10 @@ class Homepage extends StatelessWidget {
               ButtonItem(
                 buttonPage: BottomSheetPage(),
                 buttonTitle: 'Bottom Sheet page',
+              ),
+              ButtonItem(
+                buttonPage: SnackbarPage(),
+                buttonTitle: 'Snackbar page',
               ),
             ],
           ),

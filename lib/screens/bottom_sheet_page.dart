@@ -29,6 +29,7 @@ class BottomSheetPage extends StatelessWidget {
                       onTap: () {
                         // Get.changeTheme(ThemeData.light());
                         themeController.changeThemeMode(ThemeMode.light);
+                        themeController.saveTheme(false);
                       },
                     ),
                     ListTile(
@@ -37,6 +38,7 @@ class BottomSheetPage extends StatelessWidget {
                       onTap: () {
                         // Get.changeTheme(ThemeData.dark());
                         themeController.changeThemeMode(ThemeMode.dark);
+                        themeController.saveTheme(true);
                       },
                     ),
                   ],

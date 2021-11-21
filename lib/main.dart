@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:getx_practice/components/dialog/dialog_page.dart';
 import 'package:getx_practice/screens/homepage.dart';
 import 'package:getx_practice/themes/themes.dart';
 import 'package:getx_practice/themes/themes_controller.dart';

@@ -1,8 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_practice/components/dialog/dialog_page.dart';
-import 'package:getx_practice/screens/bottom_sheet_page.dart';
-import 'package:getx_practice/screens/snackbar_page.dart';
+import 'package:getx_practice/screens/module_one.dart';
+import 'package:getx_practice/screens/module_two.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -11,25 +11,24 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(20),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ButtonItem(
-                buttonPage: DialogPage(),
-                buttonTitle: 'Dialog page',
-              ),
-              ButtonItem(
-                buttonPage: BottomSheetPage(),
-                buttonTitle: 'Bottom Sheet page',
-              ),
-              ButtonItem(
-                buttonPage: SnackbarPage(),
-                buttonTitle: 'Snackbar page',
-              ),
-            ],
+        child: GridView(
+          padding: EdgeInsets.all(20),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 15,
+            mainAxisSpacing: 15,
+            childAspectRatio: 1,
           ),
+          children: [
+            ButtonItem(
+              buttonPage: ModuleOne(),
+              buttonTitle: 'Dialog, \nBottom Sheet,\nSnackbar',
+            ),
+            ButtonItem(
+              buttonPage: ModuleTwo(),
+              buttonTitle: 'State Management',
+            ),
+          ],
         ),
       ),
     );
@@ -44,18 +43,40 @@ class ButtonItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton(
-          onPressed: () {
-            Get.to(
-              () => buttonPage,
-            );
-          },
-          child: Text(buttonTitle),
+    return GestureDetector(
+      onTap: () {
+        Get.to(
+          () => buttonPage,
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 6,
+                offset: Offset(2, 2),
+                spreadRadius: 1,
+                color: Colors.deepPurple.withOpacity(.4),
+              )
+            ]),
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Center(
+            child: Text(
+              buttonTitle,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ),
-        SizedBox(height: 10),
-      ],
+      ),
     );
   }
 }

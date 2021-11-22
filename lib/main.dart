@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:getx_practice/screens/homepage.dart';
 import 'package:getx_practice/themes/themes.dart';
-import 'package:getx_practice/themes/themes_controller.dart';
+import 'package:getx_practice/controllers/themes_controller.dart';
 
 void main() {
   runApp(const MyApp());

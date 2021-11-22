@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_practice/themes/themes_controller.dart';
+import 'package:getx_practice/controllers/themes_controller.dart';
 
 class ModuleOne extends StatelessWidget {
   const ModuleOne({Key? key}) : super(key: key);

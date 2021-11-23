@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
@@ -35,6 +36,8 @@ class ModuleTwo extends StatelessWidget {
       user.age = user.age - 1;
     });
   }
+
+  final destinationController = Get.put(DestinationController());
 
   @override
   Widget build(BuildContext context) {
@@ -135,8 +138,8 @@ class ModuleTwo extends StatelessWidget {
                     children: [
                       GetX<DestinationController>(
                         init: DestinationController(),
-                        builder: (_) => Text(
-                          'Country: ${_.destination.value.country}',
+                        builder: (controller) => Text(
+                          'Country: ${controller.destination.value.country}',
                           style: TextStyle(
                             fontSize: 25,
                           ),
@@ -144,7 +147,8 @@ class ModuleTwo extends StatelessWidget {
                       ),
                       Obx(
                         () => Text(
-                          'City: ${Get.find<DestinationController>().destination.value.city}',
+                          // 'City: ${Get.find<DestinationController>().destination.value.city}',
+                          'City: ${destinationController.destination.value.city}',
                           style: TextStyle(
                             fontSize: 25,
                           ),
@@ -155,7 +159,11 @@ class ModuleTwo extends StatelessWidget {
                   SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
-                      Get.find<DestinationController>().updateDestination(
+                      // Get.find<DestinationController>().updateDestination(
+                      //   country: 'Earth',
+                      //   city: 'Afganistan',
+                      // );
+                      destinationController.updateDestination(
                         country: 'Earth',
                         city: 'Afganistan',
                       );
@@ -163,6 +171,12 @@ class ModuleTwo extends StatelessWidget {
                     child: Text('Update destination'),
                   ),
                   Text('(Using GetxController)'),
+                  Text(
+                    'make modal class > make controller > use class > create instance of the controller in the using page with Get.put() > use the instance in Obx((){})',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Text('final controller = Get.put(DestinationController());'),
                 ],
               )
             ],

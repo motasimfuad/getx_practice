@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_practice/screens/get_x_shop.dart';
 import 'package:getx_practice/screens/module_one.dart';
 import 'package:getx_practice/screens/module_two.dart';
 
@@ -14,19 +15,24 @@ class Homepage extends StatelessWidget {
         child: GridView(
           padding: EdgeInsets.all(20),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+            crossAxisCount: 1,
             crossAxisSpacing: 15,
             mainAxisSpacing: 15,
             childAspectRatio: 1,
+            mainAxisExtent: 80,
           ),
           children: [
             ButtonItem(
               buttonPage: ModuleOne(),
-              buttonTitle: 'Dialog, \nBottom Sheet,\nSnackbar',
+              buttonTitle: 'Dialog, Bottom Sheet, Snackbar',
             ),
             ButtonItem(
               buttonPage: ModuleTwo(),
               buttonTitle: 'State Management',
+            ),
+            ButtonItem(
+              buttonPage: GetXShop(),
+              buttonTitle: 'GetX Shop',
             ),
           ],
         ),

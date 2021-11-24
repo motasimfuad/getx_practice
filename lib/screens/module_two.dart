@@ -172,7 +172,7 @@ class ModuleTwo extends StatelessWidget {
                   ),
                   Text('(Using GetxController)'),
                   Text(
-                    'make modal class > make controller > use class > create instance of the controller in the using page with Get.put() > use the instance in Obx((){})',
+                    'make model class > make controller > use class > create instance of the controller in the using page with Get.put() > use the instance in Obx((){})',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10),

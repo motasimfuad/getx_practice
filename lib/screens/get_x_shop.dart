@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:get/get.dart';
 import 'package:getx_practice/controllers/cart_controller.dart';
+import 'package:getx_practice/controllers/makeups_controller.dart';
 import 'package:getx_practice/controllers/product_controller.dart';
 
 class GetXShop extends StatelessWidget {
   final productController = Get.put(ProductController());
   final cartController = Get.put(CartController());
+  final MakeupsController makeupsController = Get.put(MakeupsController());
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +200,28 @@ class GetXShop extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
+              // Expanded(
+              //   child: DraggableScrollableSheet(
+              //     minChildSize: 0.50,
+              //     builder: (BuildContext context,
+              //         ScrollController scrollController) {
+              //       return Container(
+              //         width: double.infinity,
+              //         alignment: Alignment.center,
+              //         decoration: BoxDecoration(
+              //             color: Colors.white,
+              //             borderRadius: BorderRadius.only(
+              //               topLeft: Radius.circular(25),
+              //               topRight: Radius.circular(25),
+              //             )),
+              //         child: Container(
+              //           child: Text('Cart'),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ),

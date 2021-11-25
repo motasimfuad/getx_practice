@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_practice/screens/get_x_shop.dart';
+import 'package:getx_practice/screens/http_page.dart';
 import 'package:getx_practice/screens/module_one.dart';
 import 'package:getx_practice/screens/module_two.dart';
 
@@ -29,6 +30,10 @@ class Homepage extends StatelessWidget {
             ButtonItem(
               buttonPage: ModuleTwo(),
               buttonTitle: 'State Management',
+            ),
+            ButtonItem(
+              buttonPage: HttpPage(),
+              buttonTitle: 'Fetching data from API with http',
             ),
             ButtonItem(
               buttonPage: GetXShop(),

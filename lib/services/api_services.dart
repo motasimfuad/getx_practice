@@ -19,4 +19,25 @@ class ApiServices {
     print(resSingleProduct.body);
     return json.decode(resSingleProduct.body);
   }
+
+  Future fetchCategories() async {
+    final categoriesUrl =
+        Uri.parse('https://fakestoreapi.com/products/categories');
+    final resCategories = await http.get(categoriesUrl);
+    return json.decode(resCategories.body);
+  }
+
+  // post login
+  Future userLogin(String username, String password) async {
+    final loginUrl = Uri.parse('https://fakestoreapi.com/auth/login');
+    final loginRes = await http.post(
+      loginUrl,
+      body: {
+        "username": username,
+        "password": password,
+      },
+    );
+    print(loginRes.body);
+    return json.decode(loginRes.body);
+  }
 }

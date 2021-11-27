@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_practice/screens/http_page.dart';
+import 'package:getx_practice/services/api_services.dart';
 
 class HttpLogin extends StatelessWidget {
-  const HttpLogin({Key? key}) : super(key: key);
+  final TextEditingController nameController =
+      TextEditingController(text: 'mor_2314');
+  final TextEditingController passwordController =
+      TextEditingController(text: '83r5^_');
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +32,7 @@ class HttpLogin extends StatelessWidget {
               ),
               SizedBox(height: 40),
               TextField(
+                controller: nameController,
                 decoration: InputDecoration(
                   label: Text('Username'),
                   border: OutlineInputBorder(),
@@ -33,6 +40,7 @@ class HttpLogin extends StatelessWidget {
               ),
               SizedBox(height: 20),
               TextField(
+                controller: passwordController,
                 decoration: InputDecoration(
                   label: Text('Password'),
                   border: OutlineInputBorder(),
@@ -43,7 +51,29 @@ class HttpLogin extends StatelessWidget {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final gotToken = await ApiServices().userLogin(
+                        nameController.text, passwordController.text);
+                    if (gotToken['token'] != null) {
+                      Get.snackbar(
+                        'Success',
+                        'Your token is ${gotToken['token']}',
+                        backgroundColor: Colors.green,
+                        colorText: Colors.white,
+                      );
+                      Future.delayed(Duration(seconds: 2), () {
+                        Get.to(
+                          () => HttpPage(),
+                        );
+                      });
+                    } else {
+                      Get.snackbar(
+                        'Error',
+                        'Email or password is incorrect!',
+                        backgroundColor: Colors.red,
+                      );
+                    }
+                  },
                   child: Text(
                     'LOGIN',
                     style: TextStyle(
@@ -51,7 +81,7 @@ class HttpLogin extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),

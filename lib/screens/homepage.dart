@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_practice/screens/firebase_home.dart';
+import 'package:getx_practice/screens/firebase_login.dart';
 import 'package:getx_practice/screens/get_x_shop.dart';
 import 'package:getx_practice/screens/http_login.dart';
 import 'package:getx_practice/screens/http_page.dart';
@@ -39,6 +41,10 @@ class Homepage extends StatelessWidget {
             ButtonItem(
               buttonPage: GetXShop(),
               buttonTitle: 'GetX Shop',
+            ),
+            ButtonItem(
+              buttonPage: FirebaseLogin(),
+              buttonTitle: 'Authenticate with Firebase',
             ),
           ],
         ),

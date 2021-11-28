@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_practice/controllers/auth_controller.dart';
 import 'package:getx_practice/screens/firebase_register.dart';
 
 class FirebaseLogin extends StatelessWidget {
-  const FirebaseLogin({Key? key}) : super(key: key);
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +25,16 @@ class FirebaseLogin extends StatelessWidget {
                 ),
                 SizedBox(height: 30),
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
-                    label: Text('Username'),
+                    label: Text('Email'),
                     border: OutlineInputBorder(),
                   ),
                 ),
                 SizedBox(height: 20),
                 TextField(
+                  controller: passwordController,
+                  obscureText: true,
                   decoration: InputDecoration(
                     label: Text('Password'),
                     border: OutlineInputBorder(),
@@ -40,8 +45,13 @@ class FirebaseLogin extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
+                    onPressed: () {
+                      AuthController.instance.login(
+                        emailController.text.trim(),
+                        passwordController.text.trim(),
+                      );
+                    },
+                    child: const Text(
                       'LOGIN',
                       style: TextStyle(
                         fontSize: 15,

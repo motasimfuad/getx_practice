@@ -1,11 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:getx_practice/controllers/auth_controller.dart';
 import 'package:getx_practice/screens/homepage.dart';
 import 'package:getx_practice/themes/themes.dart';
 import 'package:getx_practice/controllers/themes_controller.dart';
 
-void main() {
+Future<void> main() async {
+  // init firebase
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp().then(
+    (value) => Get.put(
+      AuthController(),
+    ),
+  );
   runApp(const MyApp());
 }
 

@@ -19,12 +19,6 @@ class FirebaseRegister extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    AuthController.instance.auth.currentUser!.email.toString(),
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text(
                     'SIGN UP',
                     style: TextStyle(
                       fontSize: 30,
@@ -51,7 +45,7 @@ class FirebaseRegister extends StatelessWidget {
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
 
                   // button
                   SizedBox(

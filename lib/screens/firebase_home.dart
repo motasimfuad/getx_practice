@@ -9,7 +9,7 @@ class FirebaseHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final todoController = Get.find<TodoController>();
+    final todoController = Get.put(TodoController());
 
     return Scaffold(
       appBar: AppBar(

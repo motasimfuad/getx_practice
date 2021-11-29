@@ -38,7 +38,7 @@ class AuthController extends GetxController {
   }
 
   // Register
-  void register(String email, password) async {
+  Future<User?> register(String email, password) async {
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -54,25 +54,27 @@ class AuthController extends GetxController {
           ),
         ),
       );
-    } catch (e) {
-      print(e.toString());
+    } on FirebaseAuthException catch (e) {
+      print(e.message.toString());
       Get.snackbar(
         'Caution',
         'User registration failed',
         backgroundColor: Colors.redAccent,
         colorText: Colors.white,
         messageText: Text(
-          e.toString(),
+          e.message.toString(),
           style: TextStyle(
             color: Colors.white,
           ),
         ),
       );
+    } catch (e) {
+      print(e);
     }
   }
 
   // login functionality
-  void login(String email, password) async {
+  Future<User?> login(String email, password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
       Get.snackbar(
@@ -80,26 +82,28 @@ class AuthController extends GetxController {
         'LoggedIn successfully.',
         backgroundColor: Colors.green,
         colorText: Colors.white,
-        messageText: Text(
+        messageText: const Text(
           'LoggedIn successfully.',
           style: TextStyle(
             color: Colors.white,
           ),
         ),
       );
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       Get.snackbar(
-        e.toString(),
+        'Error!',
         'Log in failed',
         backgroundColor: Colors.redAccent,
         colorText: Colors.white,
         messageText: Text(
-          e.toString(),
+          e.message.toString(),
           style: TextStyle(
             color: Colors.white,
           ),
         ),
       );
+    } catch (e) {
+      print(e);
     }
   }
 

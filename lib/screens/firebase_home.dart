@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_practice/controllers/auth_controller.dart';
 import 'package:getx_practice/controllers/todo_controller.dart';
+import 'package:getx_practice/services/storage_service.dart';
 
 class FirebaseHome extends StatelessWidget {
   String email;
@@ -10,6 +11,7 @@ class FirebaseHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final todoController = Get.put(TodoController());
+    final storageController = Get.put(StorageService());
 
     return Scaffold(
       appBar: AppBar(
@@ -44,6 +46,29 @@ class FirebaseHome extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+                SizedBox(height: 30),
+                Obx(
+                  () => Text(
+                    'Counter: ${storageController.counter2}',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => Text(
+                    'Local Counter: ${storageController.counter}',
+                    style: TextStyle(
+                      fontSize: 30,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    storageController.incrementCounter();
+                  },
+                  child: Icon(Icons.upload),
                 ),
               ],
             ),

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:getx_practice/controllers/auth_controller.dart';
 import 'package:getx_practice/screens/homepage.dart';
+import 'package:getx_practice/services/storage_service.dart';
 import 'package:getx_practice/themes/themes.dart';
 import 'package:getx_practice/controllers/themes_controller.dart';
 
@@ -15,7 +16,14 @@ Future<void> main() async {
       AuthController(),
     ),
   );
+  await initServices();
   runApp(const MyApp());
+}
+
+Future<void> initServices() async {
+  debugPrint('starting services...');
+  await Get.putAsync(() => StorageService().init());
+  debugPrint('services started...');
 }
 
 class MyApp extends StatelessWidget {

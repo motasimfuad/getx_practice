@@ -42,6 +42,7 @@ dependencies:
   firebase_core: ^1.10.0
   flutter_svg:
   introduction_screen:
+  shared_preferences: ^2.0.11
 
 dev_dependencies:
   flutter_test:
